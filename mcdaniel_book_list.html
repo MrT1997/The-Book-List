@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanner McDaniel's The Book List</title>
+</head>
+<body>
+    <h1>My Book List</h1>
+</body>
+</html>
+<script>
+    var books = [
+      {
+        title: 'The Design of EveryDay Things',
+        author: 'Don Norman',
+        alreadyRead: false
+      }, {
+        title: 'The Most Human Human',
+        author: 'Brian Christian',
+        alreadyRead: true
+      }
+    ];
+    for (let i = 0; i < books.length; i++) {
+        var p = document.createElement("p");
+        p.innerHTML = `${books[i].title} written by ${books[i].author}; Has Been Read? = ${books[i].alreadyRead}`;
+        document.body.appendChild(p);
+    }
+    var ul = document.createElement("ul");
+    ul.id = "myList";
+    document.body.append(ul);
+    for (let i = 0; i < books.length; i++) {
+        var li = document.createElement("li");
+        var item = document.createTextNode(`${books[i].title}`);
+        li.appendChild(item);
+        ul.appendChild(li);
+        var img = document.createElement("img");
+        if (books[i].title == "The Design of EveryDay Things") {
+            img.src = "https://res.cloudinary.com/dujofpeoh/image/upload/v1583201174/images_cphlki.jpg";
+            ul.appendChild(img);
+        } else if (books[i].title == "The Most Human Human") {
+            img.src = "https://res.cloudinary.com/dujofpeoh/image/upload/v1583203508/images_tc9utn.jpg";
+            ul.appendChild(img);
+        }
+        if (books[i].alreadyRead == true) {
+            document.getElementsByTagName("li")[i].style.color = "green";
+        } else {
+            document.getElementsByTagName("li")[i].style.color = "red";
+        }
+    }
+</script>
